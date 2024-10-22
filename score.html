@@ -1,0 +1,252 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cálculo do Score 🐍 ETERNOS</title>
+    <link href="https://fonts.googleapis.com/css2?family=Ubuntu:wght@300;400;700&display=swap" rel="stylesheet">
+    <style>
+        body {
+            background-color: #121212;
+            color: #ffffff;
+            font-family: 'Ubuntu', sans-serif;
+            text-align: center;
+            margin: 0;
+            padding: 0;
+        }
+        h1 {
+            color: #dac960; /* Cor de destaque alterada */
+            margin-bottom: 20px; /* Espaçamento abaixo do título */
+        }
+        h2 {
+            font-size: 18px; /* Diminui o tamanho da fonte dos títulos */
+            color: #dac960; /* Cor de destaque alterada */
+        }
+        label {
+            display: block;
+            margin-bottom: 5px;
+            font-size: 14px; /* Diminui o tamanho da fonte dos rótulos */
+        }
+        input[type="number"] {
+            padding: 10px;
+            margin-top: 15px; /* Adiciona espaço de 15px acima do campo */
+            margin-bottom: 10px; /* Margem entre o campo e o título */
+            background-color: #333;
+            border: 1px solid #444;
+            border-radius: 5px;
+            color: #fff;
+            width: 80%; /* Diminui a largura dos campos de entrada */
+            max-width: 200px; /* Limita a largura máxima para manter a centralização */
+            transition: border-color 0.3s;
+        }
+        input[type="number"]:focus {
+            outline: none;
+            border-color: #dac960; /* Cor de destaque ao focar */
+        }
+        button {
+            background-color: #03dac6;
+            color: #000;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 16px;
+            transition: background-color 0.3s;
+        }
+        button:hover {
+            background-color: #018786;
+        }
+        .container {
+            max-width: 900px; /* Aumenta a largura do contêiner principal */
+            margin: 0 auto;
+            padding: 20px;
+        }
+        .category {
+            background-color: #1e1e1e;
+            border-radius: 10px;
+            padding: 20px; /* Mantém o padding */
+            margin-bottom: 20px;
+            width: calc(100% - 40px); /* Faz o retângulo ocupar toda a largura disponível com margem */
+            box-sizing: border-box; /* Garante que o padding não aumente a largura total */
+            display: flex; /* Para centralizar os elementos dentro do retângulo */
+            flex-direction: column; /* Coloca os elementos em coluna */
+            align-items: center; /* Centraliza os elementos horizontalmente */
+        }
+        .field-group {
+            margin-bottom: 20px;
+            width: 100%; /* Faz o grupo ocupar toda a largura do retângulo */
+        }
+        .field-group label {
+            text-align: center; /* Centraliza os rótulos */
+        }
+        /* Estilização do retângulo flutuante */
+        .floating-result {
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            background-color: #1e1e1e;
+            border-radius: 10px;
+            padding: 10px 15px;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.5);
+            color: #ffffff;
+            font-size: 24px; /* Tamanho da fonte igual ao título */
+            font-weight: bold; /* Define o resultado como negrito */
+            z-index: 1000;
+        }
+    </style>
+    <script>
+        function calcularFormula() {
+            // Pegando os valores de cada campo de entrada
+            let level = parseFloat(document.getElementById("level").value);
+            let power = parseFloat(document.getElementById("power").value);
+            let codex = parseFloat(document.getElementById("codex").value);
+            let epict4 = parseFloat(document.getElementById("epict4").value);
+            let legt1 = parseFloat(document.getElementById("legt1").value);
+            let legt2 = parseFloat(document.getElementById("legt2").value);
+            let legt3 = parseFloat(document.getElementById("legt3").value);
+            let legt4 = parseFloat(document.getElementById("legt4").value);
+            let epicartifact = parseFloat(document.getElementById("epicartifact").value);
+            let treasure = parseFloat(document.getElementById("treasure").value);
+            let solitude = parseFloat(document.getElementById("solitude").value);
+            let constVar = parseFloat(document.getElementById("const").value);
+            let muscle = parseFloat(document.getElementById("muscle").value);
+            let yin = parseFloat(document.getElementById("yin").value);
+            let yang = parseFloat(document.getElementById("yang").value);
+            let violet = parseFloat(document.getElementById("violet").value);
+            let northern = parseFloat(document.getElementById("northern").value);
+            let toad = parseFloat(document.getElementById("toad").value);
+            let lion = parseFloat(document.getElementById("lion").value);
+            let bird = parseFloat(document.getElementById("bird").value);
+            let tortoise = parseFloat(document.getElementById("tortoise").value);
+            let tiger = parseFloat(document.getElementById("tiger").value);
+            let dragon = parseFloat(document.getElementById("dragon").value);
+
+            // Cálculo da fórmula
+            let resultado = 1.5 * (
+                (level * 1 / 1.5) +
+                (power * 0.2) +
+                ((codex) +
+                (epict4 * 22) +
+                (legt1 * 72) +
+                (legt2 * 82) +
+                (legt3 * 92) +
+                (legt4 * 145) +
+                (epicartifact * 13) +
+                (treasure * 11) +
+                (solitude) +
+                (constVar * 16) +
+                (muscle * 9) +
+                (yin * 11 * 1.5) +
+                (yang * 11) +
+                (violet * 14) +
+                (northern * 14) +
+                (toad * 14 * 1.5) +
+                (lion * 9 * 1.5) +
+                (bird * 7 * 1.5) +
+                (tortoise * 5 * 1.5) +
+                (tiger * 8 * 1.5) +
+                (dragon * 4 * 1.5)) * 0.1
+            );
+
+            // Exibindo o resultado
+            document.getElementById("resultado").textContent = "Resultado do Score: " + resultado.toFixed(2);
+        }
+
+        function init() {
+            // Adiciona evento de input a todos os campos
+            const inputs = document.querySelectorAll('input[type="number"]');
+            inputs.forEach(input => {
+                input.addEventListener('input', calcularFormula);
+            });
+        }
+
+        // Inicializa os eventos quando a página carrega
+        window.onload = init;
+    </script>
+</head>
+<body>
+    <h1>Cálculo do Score 🐍 ETERNOS</h1>
+
+    <div class="container">
+        <!-- Campos de entrada organizados em retângulos com bordas arredondadas -->
+        <div class="category">
+            <div class="field-group">
+                <label for="level">Nível</label>
+                <input type="number" id="level" value="0">
+                <label for="power">Poder</label>
+                <input type="number" id="power" value="0">
+                <label for="codex">Codex</label>
+                <input type="number" id="codex" value="0">
+            </div>
+        </div>
+        <div class="category">
+            <div class="field-group">
+                <label for="epict4">Épico T4</label>
+                <input type="number" id="epict4" value="0">
+                <label for="legt1">Lendário T1</label>
+                <input type="number" id="legt1" value="0">
+                <label for="legt2">Lendário T2</label>
+                <input type="number" id="legt2" value="0">
+                <label for="legt3">Lendário T3</label>
+                <input type="number" id="legt3" value="0">
+                <label for="legt4">Lendário T4</label>
+                <input type="number" id="legt4" value="0">
+            </div>
+        </div>
+        <div class="category">
+            <div class="field-group">
+                <label for="epicartifact">[E] Artefatos</label>
+                <input type="number" id="epicartifact" value="0">
+                <label for="treasure">[L] Tesouros</label>
+                <input type="number" id="treasure" value="0">
+            </div>
+        </div>
+        <div class="category">
+            <div class="field-group">
+                <label for="solitude">Treino Ermo</label>
+                <input type="number" id="solitude" value="0">
+                <label for="const">Constituição</label>
+                <input type="number" id="const" value="0">
+            </div>
+        </div>
+        <div class="category">
+            <div class="field-group">
+                <label for="muscle">Muscular</label>
+                <input type="number" id="muscle" value="0">
+                <label for="yin">Nove Yin</label>
+                <input type="number" id="yin" value="0">
+                <label for="yang">Nove Yang</label>
+                <input type="number" id="yang" value="0">
+            </div>
+        </div>
+        <div class="category">
+            <div class="field-group">
+                <label for="violet">Névoa</label>
+                <input type="number" id="violet" value="0">
+                <label for="northern">Norte</label>
+                <input type="number" id="northern" value="0">
+                <label for="toad">Sapo</label>
+                <input type="number" id="toad" value="0">
+            </div>
+        </div>
+        <!-- Retângulo para os cinco últimos campos -->
+        <div class="category">
+            <div class="field-group">
+                <label for="lion">Leão</label>
+                <input type="number" id="lion" value="0">
+                <label for="bird">Pássaro</label>
+                <input type="number" id="bird" value="0">
+                <label for="tortoise">Tartaruga</label>
+                <input type="number" id="tortoise" value="0">
+                <label for="tiger">Tigre</label>
+                <input type="number" id="tiger" value="0">
+                <label for="dragon">Dragão</label>
+                <input type="number" id="dragon" value="0">
+            </div>
+        </div>
+
+        <!-- Retângulo flutuante para resultado -->
+        <div class="floating-result" id="resultado">Resultado do Score: 0.00</div>
+    </div>
+</body>
+</html>
